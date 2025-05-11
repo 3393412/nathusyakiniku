@@ -25,11 +25,11 @@ class cow:
         self.tmp_time  = 0
         self.cooldonw = 0 
         self.rand = random.randrange(1,7)
-        self.image = pygame.image.load("projek/cow.png")
+        self.image = pygame.image.load("cow.png")
         self.image = pygame.transform.scale(self.image,(100,100))
     def update(self):
         if self.trigger == False and ((pygame.time.get_ticks() - self.cooldonw)/1000 >= 1) :
-            self.image = pygame.image.load("projek/cow.png")
+            self.image = pygame.image.load("cow.png")
             self.image = pygame.transform.scale(self.image,(100,100)) 
         if( pygame.time.get_ticks() - self.time)/1000 >= 10  :
             if self.trigger:
@@ -39,7 +39,7 @@ class cow:
                 
                 self.canrnd = False
                 # self.color = (255,0,0)
-                self.image = pygame.image.load("projek/redcow2.png")
+                self.image = pygame.image.load("redcow2.png")
                 self.image = pygame.transform.scale(self.image,(100,100)) 
                 self.tmp_time = pygame.time.get_ticks()
                 self.trigger = True
@@ -50,7 +50,7 @@ class cow:
             if self.rect.collidepoint(x) :
                 print('fix')
                 self.grade -= (pygame.time.get_ticks() - self.tmp_time)/1000
-                self.image = pygame.image.load("projek/cow.png")
+                self.image = pygame.image.load("cow.png")
                 self.image = pygame.transform.scale(self.image,(100,100)) 
                 self.canrnd = True
                 self.trigger = False
@@ -128,11 +128,11 @@ class meat:
     def __init__(self,x,y,grade,color):
         self.aura = False
         if grade < 5 :
-            image = pygame.image.load("projek/meat_rott.png").convert_alpha()
+            image = pygame.image.load("meat_rott.png").convert_alpha()
         elif 5 <= grade < 8 :
-            image = pygame.image.load("projek/meat.png").convert_alpha()
+            image = pygame.image.load("meat.png").convert_alpha()
         else : 
-            image = pygame.image.load("projek/neat_aura.png").convert_alpha()
+            image = pygame.image.load("neat_aura.png").convert_alpha()
             self.aura = True
   
         self.rect = image.get_rect(topleft=(x, y))
@@ -153,15 +153,15 @@ class meat:
 
             progress = self.cooked / self.max_cooked
             if 3<= self.cooked <= 5 :
-                tmp = pygame.image.load("projek/meatcooking.png").convert_alpha()
+                tmp = pygame.image.load("meatcooking.png").convert_alpha()
                 self.image = tmp
                 self.menu = 'Medium-rare'
             elif 6 <= self.cooked < 8 :
-                tmp = pygame.image.load("projek/meat-cooked.png").convert_alpha()
+                tmp = pygame.image.load("meat-cooked.png").convert_alpha()
                 self.image = tmp
                 self.menu = 'Cooked'
             elif self.cooked >= 8 :
-                tmp = pygame.image.load("projek/meat_dead.png").convert_alpha()
+                tmp = pygame.image.load("meat_dead.png").convert_alpha()
                 self.image = tmp
                 self.menu = 'Toasted'
             bar_width = 100
@@ -216,17 +216,17 @@ class game:
 
     def helpdraw(self):
         self.screen.fill((255,255,255))
-        background = pygame.image.load("projek/คินนิคุแมน_Website_1200x628.jpg").convert()
+        background = pygame.image.load("คินนิคุแมน_Website_1200x628.jpg").convert()
         self.screen.blit(background, (0, 0))
         self.backgui = pygame.Rect(450,600,300,200)
         self.screen.blit(background, (0, 0))
         # pygame.draw.rect(self.screen,(0,212,255),self.backgui)
         # self.backtomenu = pygame.Rect(300,600,300,100)
-        helpmenu = pygame.image.load('projek/backtomenu.png').convert_alpha()
+        helpmenu = pygame.image.load('backtomenu.png').convert_alpha()
         helpmenu = pygame.transform.scale(helpmenu, (300, 200))
         self.screen.blit(helpmenu,self.backgui.topleft)
         self.howtodum = pygame.Rect(100,100,400,400)
-        hwot = pygame.image.load('projek/howtoplay.png').convert_alpha()
+        hwot = pygame.image.load('howtoplay.png').convert_alpha()
         hwot = pygame.transform.scale(hwot, (600, 500))
         self.screen.blit(hwot,self.howtodum.topleft)
     def helpevent(self,event):
@@ -236,7 +236,7 @@ class game:
                 self.prog.state = 'menu'
     def menudraw(self):
         self.screen.fill((255,255,255))
-        background = pygame.image.load("projek/bgmenu.jpg").convert()
+        background = pygame.image.load("bgmenu.jpg").convert()
         background = pygame.transform.scale(background,(900,800))
         helpx = 450 - 125
         helpy= 520
@@ -251,7 +251,7 @@ class game:
         self.playgui = pygame.Rect(playx,playy,350,100)
         self.datagui = pygame.Rect(datax,datay,200,70)
         self.logo = pygame.Rect(300,50,300,300)
-        logoimg = pygame.image.load("projek/logo.png")
+        logoimg = pygame.image.load("logo.png")
         logoimg =  pygame.transform.scale(logoimg, (300, 300))
         # rice_image = pygame.image.load("projek/rice.png").convert_alpha()
         # self.screen.blit(rice_image,(ricex,ricey))
@@ -260,16 +260,16 @@ class game:
         self.screen.blit(background, (0, 0))
         # pygame.draw.rect(self.screen,(0,255,0),self.setting)
         # pygame.draw.rect(self.screen,(0,212,255),self.datagui)
-        dataimg = pygame.image.load("projek/data.png")
+        dataimg = pygame.image.load("data.png")
         dataimg =  pygame.transform.scale(dataimg, (200, 70))
-        helpimg = pygame.image.load("projek/help.png")
+        helpimg = pygame.image.load("help.png")
         helpimg =  pygame.transform.scale(helpimg, (250, 100))
         # pygame.draw.rect(self.screen,(0,212,255),self.helpgui)
         # pygame.draw.rect(self.screen,(0,212,255),self.playgui)
-        setimg = pygame.image.load("projek/hum.png")
+        setimg = pygame.image.load("hum.png")
         setimg =  pygame.transform.scale(setimg, (50, 50))
 
-        image = pygame.image.load("projek/button_start.png")
+        image = pygame.image.load("button_start.png")
         image = pygame.transform.scale(image, (350, 200))
         self.screen.blit(logoimg,self.logo.topleft)
         self.screen.blit(dataimg,self.datagui.topleft)
@@ -299,7 +299,7 @@ class game:
         self.screen.blit(font.render(f"your current score :{self.default_score}", True, (0, 0, 0)), (50, 300))
         self.screen.blit(font.render(f"your Max Oder :{self.maxorder}", True, (0, 0, 0)), (50, 400))
         self.quitbtnsttmn = pygame.Rect(700,700,200,100)
-        image = pygame.image.load('projek/button_quit.png').convert_alpha()
+        image = pygame.image.load('button_quit.png').convert_alpha()
         image = pygame.transform.scale(image, (200, 100))
         self.screen.blit(image,self.quitbtnsttmn.topleft)
         tmp = pygame.font.SysFont('Arial', 17)
@@ -341,8 +341,8 @@ class game:
         'cook': self.total_cooked,
         'serve': self.total_serve
     }])
-            write_header = not os.path.exists('projek/data.csv')
-            summary_df.to_csv('projek/data.csv', mode='a', header=write_header, index=False)
+            write_header = not os.path.exists('data.csv')
+            summary_df.to_csv('data.csv', mode='a', header=write_header, index=False)
             self.prog.state = 'ending'
         self.screen.fill((255,255,255))
         
@@ -362,41 +362,41 @@ class game:
         ricex = 10
         ricey = 300
         self.rice = pygame.Rect(ricex,ricey,200,200)
-        rice_image = pygame.image.load("projek/rice.png").convert_alpha()
-        quit_image = pygame.image.load('projek/button_quit.png').convert_alpha()
+        rice_image = pygame.image.load("rice.png").convert_alpha()
+        quit_image = pygame.image.load('button_quit.png').convert_alpha()
         self.quitbtn = pygame.Rect(700,700,200,100)
         quit_image = pygame.transform.scale(quit_image, (200, 100))
         
         self.buy = pygame.Rect(10, 150, 150, 75)
-        buyimg = pygame.image.load("projek/buy.png")
+        buyimg = pygame.image.load("buy.png")
         buyimg = pygame.transform.scale(buyimg,(150,75))
         steakx = 650
         steaky = 350
         self.steak = pygame.Rect(steakx,steaky,200,200)
-        steakimg = pygame.image.load("projek/pan-removebg-preview.png")
+        steakimg = pygame.image.load("pan-removebg-preview.png")
         steakimg = pygame.transform.scale(steakimg,(200,200))
         soijux = 650
         soijuy = 500
         self.soiju = pygame.Rect(soijux,soijuy,200,200)
-        soijuimg = pygame.image.load("projek/keang-removebg-preview.png")
+        soijuimg = pygame.image.load("keang-removebg-preview.png")
         soijuimg = pygame.transform.scale(soijuimg,(200,200))
         self.pan_radius = 165   
         clock = pygame.time.Clock()
         self.serve = pygame.Rect(280,300,300,300)
-        serveimg = pygame.image.load("projek/serve.png")
+        serveimg = pygame.image.load("serve.png")
         serveimg = pygame.transform.scale(serveimg,(300,300))
         cowslotx = 0
         cowsloty = 200
         self.cowslotgui = pygame.Rect(cowslotx,cowsloty,200,100)
-        cowsltimg = pygame.image.load("projek/addcowslot.png")
+        cowsltimg = pygame.image.load("addcowslot.png")
         cowsltimg = pygame.transform.scale(cowsltimg,(200,100))
         trashx = 10
         trashy = 700
         self.trash = pygame.Rect(trashx,trashy,150,150)
-        trashimg = pygame.image.load("projek/trashcan.png") 
+        trashimg = pygame.image.load("trashcan.png") 
         trashimg = pygame.transform.scale(trashimg,(150,150))
         self.box = pygame.Rect(10,500,200,200)
-        boximg = pygame.image.load("projek/dish.png")
+        boximg = pygame.image.load("dish.png")
         boximg = pygame.transform.scale(boximg,(200,200))
         delta_time = clock.tick(60)
         # pygame.draw.rect(self.screen,(0,212,255),self.trash)
@@ -407,7 +407,7 @@ class game:
         # pygame.draw.rect(self.screen,(255,0,0),self.buy)
         # pygame.draw.rect(self.screen,(255,0,0),self.box)
 
-        backgroundplay = pygame.image.load("projek/background.png").convert()
+        backgroundplay = pygame.image.load("background.png").convert()
         backgroundplay = pygame.transform.scale(backgroundplay,(900,800))
         self.screen.blit(backgroundplay, (0, 0))
         # pygame.draw.circle(self.screen, pan_color, self.pan_pos, self.pan_radius)
@@ -476,7 +476,7 @@ class game:
         # self.screen.blit(click, (200, 500))
         # print(self.mouse_data)
     def launch_stat_graph(self):
-        self.root.after(0, lambda: StatViewer(self.root, "projek/data.csv"))
+        self.root.after(0, lambda: StatViewer(self.root, "data.csv"))
     def playevent(self,event) :
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.total_click += 1
@@ -518,10 +518,10 @@ class game:
                             self.meat[self.drag].permcook = False
                             self.meat[self.drag].color = (255,0,0)
                             if self.meat[self.drag].aura :
-                                image = pygame.image.load("projek/raw-aura.png")
+                                image = pygame.image.load("raw-aura.png")
                                 image = pygame.transform.scale(image, (150, 150))
                             else :
-                                image = pygame.image.load("projek/raw-removebg-preview.png")
+                                image = pygame.image.load("raw-removebg-preview.png")
                                 image = pygame.transform.scale(image, (150, 150))
                             self.meat[self.drag].image = image.convert_alpha()
                             if self.meat[self.drag].menu == 'Cooked' :
@@ -535,10 +535,10 @@ class game:
                         if self.steak.collidepoint(mouse_pos)and self.meat[self.drag].menu != None :
                             self.meat[self.drag].permcook = False
                             if self.meat[self.drag].aura :
-                                image = pygame.image.load("projek/steakaura.png")
+                                image = pygame.image.load("steakaura.png")
                                 image = pygame.transform.scale(image, (150, 150))
                             else :
-                                image = pygame.image.load("projek/steabg.png")
+                                image = pygame.image.load("steabg.png")
                                 image = pygame.transform.scale(image, (150, 150))
                             self.meat[self.drag].image = image.convert_alpha()
                             
@@ -548,10 +548,10 @@ class game:
                             self.meat[self.drag].permcook = False
 
                             if self.meat[self.drag].aura :
-                                image = pygame.image.load("projek/soiju_2-aura.png")
+                                image = pygame.image.load("soiju_2-aura.png")
                                 image = pygame.transform.scale(image, (150, 150))
                             else :
-                                image = pygame.image.load("projek/soiju_2-removebg-preview.png")
+                                image = pygame.image.load("soiju_2-removebg-preview.png")
                                 image = pygame.transform.scale(image, (150, 150))
                             self.meat[self.drag].image = image.convert_alpha()
                             self.meat[self.drag].menu = 'Soiju'
@@ -597,20 +597,20 @@ class game:
                     self.last_recorded_time = current_time
     def enddraw(self) :
         self.screen.fill((255,255,255))
-        background = pygame.image.load("projek/chara01.png").convert()
+        background = pygame.image.load("chara01.png").convert()
         self.screen.blit(background, (0, 0))
         self.newgame_button = pygame.Rect(300,300,300,100)
-        newimg = pygame.image.load("projek/repaly.png")
+        newimg = pygame.image.load("repaly.png")
         newimg =  pygame.transform.scale(newimg, (300, 100))
         self.screen.blit(newimg,self.newgame_button.topleft)
         self.backtomenu = pygame.Rect(300,600,300,100)
-        quitimage = pygame.image.load('projek/backtomenu.png').convert_alpha()
+        quitimage = pygame.image.load('backtomenu.png').convert_alpha()
         quitimage = pygame.transform.scale(quitimage, (300, 100))
         self.screen.blit(quitimage,self.backtomenu.topleft)
         # pygame.draw.rect(self.screen,(0,212,255),self.newgame_button)
         # pygame.draw.rect(self.screen,(0,212,255),self.backtomenu)
         self.graph_button = pygame.Rect(300, 450, 300, 100)
-        graphimg = pygame.image.load("projek/data.png")
+        graphimg = pygame.image.load("data.png")
         graphimg =  pygame.transform.scale(graphimg, (300, 100))
         self.screen.blit(graphimg,self.graph_button.topleft)
         # pygame.draw.rect(self.screen, (255, 100, 100), self.graph_button)
